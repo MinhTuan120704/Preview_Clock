@@ -1,0 +1,16 @@
+D:\Github\Clock\bin\Debug\Clock.exe.config
+D:\Github\Clock\bin\Debug\Clock.exe
+D:\Github\Clock\bin\Debug\Clock.pdb
+D:\Github\Clock\obj\Debug\Clock.csproj.AssemblyReference.cache
+D:\Github\Clock\obj\Debug\MainWindow.g.cs
+D:\Github\Clock\obj\Debug\App.g.cs
+D:\Github\Clock\obj\Debug\Clock_MarkupCompile.cache
+D:\Github\Clock\obj\Debug\Clock_MarkupCompile.lref
+D:\Github\Clock\obj\Debug\MainWindow.baml
+D:\Github\Clock\obj\Debug\Clock.g.resources
+D:\Github\Clock\obj\Debug\Clock.Properties.Resources.resources
+D:\Github\Clock\obj\Debug\Clock.csproj.GenerateResource.cache
+D:\Github\Clock\obj\Debug\Clock.csproj.CoreCompileInputs.cache
+D:\Github\Clock\obj\Debug\Clock.exe
+D:\Github\Clock\obj\Debug\Clock.pdb
+D:\Github\Clock\obj\Debug\App.baml
