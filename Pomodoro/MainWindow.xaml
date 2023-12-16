@@ -278,18 +278,14 @@
                 Background="#7F433E5B" 
                 FontSize="27"
                 Click="Times_Up_Click"/>
-            <TextBox x:Name="txbTimes"
+            <Label x:Name="txbTimes"
                 FontSize="55"
                 Background="Transparent"
                 Foreground="White" Canvas.Left="142" Canvas.Top="337" Height="70" Width="102"
                 VerticalContentAlignment="Center"
                 HorizontalContentAlignment="Center"
                 BorderThickness="0"
-                SelectionBrush="#FFB45CE0"
-                CaretBrush="White"
-                MaxLength="3"
-                Text="2"
-                LostFocus="txbTimes_LostFocus"/>
+                Content="2"/>
             <TextBlock Style="{StaticResource txbl_Default}"
                 FontSize="17"
                 Text="times" 

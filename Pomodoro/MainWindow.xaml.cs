@@ -63,7 +63,12 @@ namespace Pomodoro
                 bm = dbm;
                 bs = dbs;
 
-                if (MessageBox.Show("Break time has left", "Clock", MessageBoxButton.OK) == MessageBoxResult.OK)
+                if (have_breaks == false)
+                {
+                    if(MessageBox.Show("Break time has left", "Clock", MessageBoxButton.OK) == MessageBoxResult.OK)
+                        _timer.Start();
+                }
+                else
                 {
                     _timer.Start();
                 }
@@ -101,14 +106,17 @@ namespace Pomodoro
             bm = breaktime;
             bs = 0;
             dbs = 0;
-            txblCountdown.Text = '0' + fm.ToString() + ":0" + fs.ToString();
+            if(dfm >= 10)
+            {
+                txblCountdown.Text = fm.ToString() + ":0" + fs.ToString();
+            }
+            else
+                txblCountdown.Text = '0' + fm.ToString() + ":0" + fs.ToString();
             have_breaks = Cb_Have_Breaks.IsChecked;
 
-            if(have_breaks == false)
-            {
-                if(Cb_Until_Stop.IsChecked == true) NumberOfPomodoros = 11;
-                else NumberOfPomodoros = Int32.Parse(txbTimes.Text) - 1;
-            }
+            if(Cb_Until_Stop.IsChecked == true) NumberOfPomodoros = 11;
+            else NumberOfPomodoros = Int32.Parse((string)txbTimes.Content) - 1;
+
         }
 
         private void _timer_Tick(object sender, EventArgs e)
@@ -158,7 +166,7 @@ namespace Pomodoro
 
         void Set_index_textchanged()
         {
-            long focus_time = Get_Focus_Time();
+            int focus_time = Get_Focus_Time();
             for (int i = 1; i < time.Count - 1; i++)
             {
                 if (time[i] == focus_time)
@@ -176,8 +184,18 @@ namespace Pomodoro
 
         private int Get_Focus_Time()
         {
-            int focus_time = int.Parse(txblFocusTime.Text);
-            return focus_time;
+            int focus_time ;
+            if(int.TryParse(txblFocusTime.Text, out focus_time) == true)
+            {
+                focus_time = int.Parse(txblFocusTime.Text);
+                return focus_time;
+            }
+            else
+            {
+                focus_time = time[count];
+                return focus_time;
+            }
+             
         }
 
         private int Get_Break_Time()
@@ -242,6 +260,10 @@ namespace Pomodoro
                 {
                     txblFocusTime.Text = time[time.Count - 1].ToString();
                     count = time.Count-1;
+                }
+                else if(Get_Focus_Time() == time[count])
+                {
+                    txblFocusTime.Text = Get_Focus_Time().ToString();
                 }
                 else
                 {
@@ -337,7 +359,7 @@ namespace Pomodoro
                 _timer.Stop();
 
 
-                if (have_breaks == true && MessageBox.Show("Focus session has ended", "Clock", MessageBoxButton.OK) == MessageBoxResult.OK || NumberOfPomodoros == 0 && MessageBox.Show("Focus session has ended", "Clock", MessageBoxButton.OK) == MessageBoxResult.OK)
+                if ( NumberOfPomodoros == 0 && MessageBox.Show("Focus session has ended", "Clock", MessageBoxButton.OK) == MessageBoxResult.OK)
                 {
                     Cv_Break.Visibility = Visibility.Visible;
                     Cv_Focus.Visibility = Visibility.Visible;
@@ -379,35 +401,27 @@ namespace Pomodoro
             {
                 BreakTime_Up_Button.IsEnabled = false;
                 BreakTime_Down_Button.IsEnabled = false;
-                Cb_Until_Stop.IsEnabled = false;
-                Times_Down_Button.IsEnabled = false;
-                Times_Up_Button.IsEnabled = false;
-                txbTimes.IsEnabled = false;
             }
             else
             {
                 BreakTime_Up_Button.IsEnabled = true;
                 BreakTime_Down_Button.IsEnabled = true;
-                Cb_Until_Stop.IsEnabled=true;
-                Times_Down_Button.IsEnabled = true;
-                Times_Up_Button.IsEnabled = true;
-                txbTimes.IsEnabled = true;
             }
         }
 
         private void Times_Down_Click(object sender, RoutedEventArgs e)
         {
-            if(Int32.Parse(txbTimes.Text) > 2) 
+            if(Int32.Parse((string)txbTimes.Content) > 2) 
             {
-                txbTimes.Text = (Int32.Parse(txbTimes.Text)-1).ToString();
+                txbTimes.Content = (Int32.Parse((string)txbTimes.Content)-1).ToString();
             }
         }
 
         private void Times_Up_Click(object sender, RoutedEventArgs e)
         {
-            if (Int32.Parse(txbTimes.Text) < 10)
+            if (Int32.Parse((string)txbTimes.Content) < 10)
             {
-                txbTimes.Text = (Int32.Parse(txbTimes.Text) + 1).ToString();
+                txbTimes.Content = (Int32.Parse((string)txbTimes.Content) + 1).ToString();
             }
         }
 
@@ -423,19 +437,7 @@ namespace Pomodoro
                 Times_Down_Button.IsEnabled = true;
                 Times_Up_Button.IsEnabled = true;
             }
-        }
-
-        private void txbTimes_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if(Int32.Parse(txbTimes.Text) > 10)
-            {
-                txbTimes.Text = 10.ToString();
-            }
-            if(Int32.Parse(txbTimes.Text) < 1)
-            {
-                txbTimes.Text = 1.ToString();
-            }
-        }
+        } 
 
         private void Start_Button_Click(object sender, RoutedEventArgs e)
         {
