@@ -84,7 +84,7 @@
         </Grid>
 
         <Grid Grid.Row="2" Margin="59,37,0,0">
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,30">
                 <Grid Width="692">
                     <StackPanel Name="SpLaps" 
                                 Visibility="Hidden" 
