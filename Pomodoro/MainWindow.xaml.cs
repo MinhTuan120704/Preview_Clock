@@ -26,6 +26,7 @@ namespace Pomodoro
         List<int> time = new List<int>() {1, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 90, 120, 150, 180, 210, 240 };
         List<int> break_time = new List<int>() { 1, 2, 3, 4, 5, 10, 15, 20, 25, 30 };
 
+
         static int count = 3;
         static int BreakTime_count = 4;
         private DispatcherTimer _timer;
@@ -36,6 +37,7 @@ namespace Pomodoro
         private int  dfm, dfs, dbm, dbs;
         private bool? have_breaks;
         private int NumberOfPomodoros;
+        private bool check_task_empty = false; 
         public MainWindow()
         {
             InitializeComponent();
@@ -350,6 +352,74 @@ namespace Pomodoro
                 Pause_Button.Content = "Pause";
                 Back_Button.IsEnabled = false;
             }
+        }
+
+        private void Start_Button_Copy_Click(object sender, RoutedEventArgs e)
+        {
+            Lsv_tasks.Visibility = Visibility.Visible;
+            Stay_on_track.Visibility = Visibility.Hidden;
+            Add_Tasks_and.Visibility = Visibility.Hidden;
+            Start_Button_Copy.Visibility = Visibility.Hidden;
+
+            TextBox newtb = new TextBox();
+
+            Lsv_tasks.Items.Add(newtb);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Lsv_tasks.Visibility = Visibility.Visible;
+            Stay_on_track.Visibility = Visibility.Hidden;
+            Add_Tasks_and.Visibility = Visibility.Hidden;
+            Start_Button_Copy.Visibility = Visibility.Hidden;
+
+            TextBox newtb = new TextBox();
+
+            Lsv_tasks.Items.Add(newtb);
+        }
+
+        private void NewTB_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+            check_task_empty = false;
+            if (e.Key == Key.Enter)
+            {
+                
+                if (tb.Text == string.Empty)
+                {
+                    Lsv_tasks.Items.RemoveAt(Lsv_tasks.Items.Count-1);
+                    
+                }
+                if(Lsv_tasks.Items.Count == 0)
+                {
+                    Lsv_tasks.Visibility = Visibility.Hidden;
+                    Stay_on_track.Visibility = Visibility.Visible;
+                    Add_Tasks_and.Visibility = Visibility.Visible;
+                    Start_Button_Copy.Visibility = Visibility.Visible;
+                }
+                Lsv_tasks.SelectedItem = null;
+                Main_Grid.Focus();
+            }
+            
+        }
+
+        private void NewTB_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = sender as TextBox;
+
+            if (tb.Text == string.Empty && check_task_empty == true)
+            {
+                Lsv_tasks.Items.RemoveAt(Lsv_tasks.Items.Count - 1);
+                if (Lsv_tasks.Items.Count == 0)
+                {
+                    Lsv_tasks.Visibility = Visibility.Hidden;
+                    Stay_on_track.Visibility = Visibility.Visible;
+                    Add_Tasks_and.Visibility = Visibility.Visible;
+                    Start_Button_Copy.Visibility = Visibility.Visible;
+                }
+            }
+            Lsv_tasks.SelectedItem = null;
+            check_task_empty = true;
         }
 
         private void Skip_Button_Click(object sender, RoutedEventArgs e)

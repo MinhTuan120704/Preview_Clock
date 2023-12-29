@@ -4,105 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Final_StopWatch"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="MainWindow" Height="850" Width="1400" WindowStartupLocation="CenterScreen">
-    <Window.Background>
-        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-            <GradientStop Color="#FF340546" Offset="1"/>
-            <GradientStop Color="#FF66277F" Offset="0"/>
-            <GradientStop Color="#FF580C75" Offset="0.631"/>
-        </LinearGradientBrush>
-    </Window.Background>
+        Title="MainWindow" Height="409" Width="459" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-
-        <TextBlock  
-        Name ="TimeDisplay" 
-        Grid.Row ="0" 
-        Style="{StaticResource Time_Display}"/>
-
-        <TextBlock 
-        Name="hrDisplay" 
-        Grid.Row="0"  
-        Text="hr" 
-        Margin="0 0 275 0"
-        Style="{StaticResource hr_min_sec_Display}"></TextBlock>
-
-        <TextBlock 
-        Name="minDisplay" 
-        Grid.Row="0"  
-        Text="min" 
-        Margin="0 0 95 0"
-        Style="{StaticResource hr_min_sec_Display}"></TextBlock>
-
-        <TextBlock 
-        Name="secDisplay" 
-        Grid.Row="0" 
-        Text="sec" 
-        Margin="100 0 0 0"
-        Style="{StaticResource hr_min_sec_Display}"></TextBlock>
-
-        <Button Name="btnStart" 
-                Content="Start"   
-                Click="btnStart_Click" 
-                Grid.Row="1"
-                Margin="0 0 253 0"/>
-
-        <Button Name="btnLaps" 
-                Content="Laps"   
-                Grid.Row="1"
-                Click="btnLaps_Click" Margin="0,0,0,0" />
-
-        <Button Name="btnClear" 
-                Content="Clear"  
-                Click="btnClear_Click" 
-                Grid.Row="1"
-                Margin="253 0 0 0"/>
-
-
-        <Grid Grid.Row="2" Margin="0,0,0,236">
-            <TextBlock  Text="Laps" 
-                    x:Name="txblLaps"  
-                    FontSize="20"  
-                    Margin="0,0,500,0"
-                    Style="{StaticResource Flags_Display}"/>
-
-            <TextBlock  Text="Time" 
-                    x:Name="txblTime"
-                    Margin="15 0 0 0"
-                    Style="{StaticResource Flags_Display}"></TextBlock>
-
-            <TextBlock  Text="Total" 
-                    x:Name="txblTotal" 
-                    Margin="515 0 0 0"
-                    Style="{StaticResource Flags_Display}"></TextBlock>
-        </Grid>
-
-        <Grid Grid.Row="2" Margin="59,37,0,0">
-            <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="0,0,0,30">
-                <Grid Width="692">
-                    <StackPanel Name="SpLaps" 
-                            Visibility="Hidden" 
-                            HorizontalAlignment="Left" 
-                            Width="128"/>
-
-                    <StackPanel x:Name="SpSpeed"
-                            Visibility="Hidden" 
-                            Margin="133,0,458,0"/>
-
-                    <StackPanel Name="SpTime"
-                            Visibility="Hidden" 
-                            Margin="239,0,268,0" />
-
-                    <StackPanel Name="SpTotal"
-                            Visibility="Hidden" 
-                            Margin="469,0,0,0"/>
-                </Grid>
-            </ScrollViewer>
-        </Grid>
+        
     </Grid>
 </Window>

@@ -14,3 +14,12 @@ D:\Github\Clock\obj\Debug\Clock.csproj.CoreCompileInputs.cache
 D:\Github\Clock\obj\Debug\Clock.exe
 D:\Github\Clock\obj\Debug\Clock.pdb
 D:\Github\Clock\obj\Debug\App.baml
+D:\Github\Clock\bin\Debug\MaterialDesignColors.dll
+D:\Github\Clock\bin\Debug\MaterialDesignThemes.Wpf.dll
+D:\Github\Clock\bin\Debug\Microsoft.Xaml.Behaviors.dll
+D:\Github\Clock\bin\Debug\MaterialDesignColors.pdb
+D:\Github\Clock\bin\Debug\MaterialDesignThemes.Wpf.pdb
+D:\Github\Clock\bin\Debug\MaterialDesignThemes.Wpf.xml
+D:\Github\Clock\bin\Debug\Microsoft.Xaml.Behaviors.pdb
+D:\Github\Clock\bin\Debug\Microsoft.Xaml.Behaviors.xml
+D:\Github\Clock\obj\Debug\Clock.csproj.CopyComplete

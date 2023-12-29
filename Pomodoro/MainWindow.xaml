@@ -79,10 +79,10 @@
         </Canvas>
 
         <Canvas x:Name="Cv_Focus" 
-            Margin="306,54,478,354">
+            Margin="306,54,478,314">
             <Rectangle Width="386" 
-                       Height="402"
-                       Style="{StaticResource RTG_Default}"/>
+                       Height="442"
+                       Style="{StaticResource RTG_Default}" HorizontalAlignment="Center"/>
             <TextBlock Style="{StaticResource txbl_Default}"
                        Text="Get ready to focus!"
                        FontSize="23"  
@@ -309,25 +309,86 @@
         </Canvas>
 
         <Canvas x:Name="Cv_Tasks" 
-            Margin="306,475,478,69">
+            Margin="306,514,478,52">
             <Rectangle Width="386"
-                       Height="266"
-                       Style="{StaticResource RTG_Default}"/>
+                       Height="242"
+                       Style="{StaticResource RTG_Default}" HorizontalAlignment="Center" Canvas.Top="2"/>
+            <Button Style="{StaticResource Icon_Button_Style}"
+                    Content="➕" 
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Left"
+                    Padding="0" Canvas.Left="351" Click="Button_Click"/>
+            <TextBlock Name="Stay_on_track"
+                Style="{StaticResource txbl_Default}"
+                Text="Stay on track"
+                FontSize="23"  
+                Canvas.Left="128" 
+                Canvas.Top="66"/>
+            <TextBlock Style="{StaticResource txbl_Default}"
+                       Name="Add_Tasks_and"
+                TextWrapping="Wrap"
+                FontSize="13"
+                Text="Add tasks and assign them to focus sessions throughout your day."  
+                Width="311" 
+                Canvas.Left="41" 
+                Canvas.Top="102" Height="65"
+                TextAlignment="Center"
+                Foreground="LightGray"/>
+            <TextBlock Style="{StaticResource txbl_Default}"
+                Text="Tasks"
+                FontSize="15"  
+                Canvas.Left="21" 
+                Canvas.Top="2"/>
+            <Button x:Name="Start_Button_Copy"
+                Style="{StaticResource Icon_Button_Style}" 
+                Canvas.Left="125" 
+                Canvas.Top="159"  
+                Width="152"
+                Content="➕ Add a task"
+                Padding="0"
+                Foreground="White"
+                Background="{StaticResource Setting.Background}" 
+                Height="43" Click="Start_Button_Copy_Click"/>
+            <ListView x:Name="Lsv_tasks"
+                      Height="204" 
+                      Width="386" 
+                      Background="Transparent" 
+                      HorizontalAlignment="Center" 
+                      VerticalAlignment="Top" 
+                      Canvas.Top="40"
+                      Visibility="Hidden"
+                      BorderThickness="0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBox x:Name="NewTB" 
+                            Width="350" 
+                                 FontSize="20" 
+                                 BorderBrush="WhiteSmoke" 
+                                 BorderThickness="1" 
+                                 Background="Transparent" 
+                                 Foreground="White"
+                                 FocusManager.FocusedElement="{Binding ElementName=NewTB}"
+                                 KeyDown="NewTB_KeyDown"
+                                 LostFocus="NewTB_LostFocus"/> 
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </Canvas>
 
         <Canvas Name="Cv_Daily"
             Margin="705,514,71,52">
             <Rectangle Width="400"
-                       Height="247"
+                       Height="244"
                        Style="{StaticResource RTG_Default}" HorizontalAlignment="Center"/>
         </Canvas>
 
         <Canvas x:Name="Cv_Countdown" 
-                Margin="306,73,71,354"
+                Margin="306,73,71,314"
                 Visibility="Hidden">
             <Rectangle Style="{StaticResource RTG_Default}"
                        Width="793"
-                       Height="383" HorizontalAlignment="Center"/>
+                       Height="423" HorizontalAlignment="Center"/>
 
             <Rectangle Width="408"
            Height="80" 

@@ -24,25 +24,13 @@ namespace Final_StopWatch
     /// </summary>
     public partial class MainWindow : Window
     { 
-        StopWatch stopwatch = new StopWatch();
-        DispatcherTimer _timer = new DispatcherTimer();
+        
         public MainWindow()
         {
             InitializeComponent();
-
-            btnLaps.IsEnabled = false;
-
-            
-            _timer.Interval = TimeSpan.FromMilliseconds(10);
-            _timer.Tick += _timer_Tick;
-            
-           
         }
 
-        public void _timer_Tick(object sender, EventArgs e)
-        {
-            stopwatch.UpdateTimeDisplay();
-        }
+        
 
     }
 }

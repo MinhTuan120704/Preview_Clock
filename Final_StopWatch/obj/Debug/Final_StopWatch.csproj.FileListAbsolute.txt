@@ -3,3 +3,16 @@ D:\Github\Clock\Final_StopWatch\obj\Debug\MainWindow.g.cs
 D:\Github\Clock\Final_StopWatch\obj\Debug\App.g.cs
 D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch_MarkupCompile.cache
 D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch_MarkupCompile.lref
+D:\Github\Clock\Final_StopWatch\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Github\Clock\Final_StopWatch\bin\Debug\Final_StopWatch.exe.config
+D:\Github\Clock\Final_StopWatch\bin\Debug\Final_StopWatch.exe
+D:\Github\Clock\Final_StopWatch\bin\Debug\Final_StopWatch.pdb
+D:\Github\Clock\Final_StopWatch\obj\Debug\App.baml
+D:\Github\Clock\Final_StopWatch\obj\Debug\MainWindow.baml
+D:\Github\Clock\Final_StopWatch\obj\Debug\ResourcesXAML\StopWatchRD.baml
+D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch.g.resources
+D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch.Properties.Resources.resources
+D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch.csproj.GenerateResource.cache
+D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch.csproj.CoreCompileInputs.cache
+D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch.exe
+D:\Github\Clock\Final_StopWatch\obj\Debug\Final_StopWatch.pdb
