@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("app_icon.ico")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sources/blue_tick.png")]
 
 

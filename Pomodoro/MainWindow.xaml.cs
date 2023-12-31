@@ -387,7 +387,7 @@ namespace Pomodoro
                 
                 if (tb.Text == string.Empty)
                 {
-                    Lsv_tasks.Items.RemoveAt(Lsv_tasks.Items.Count-1);
+                    //Lsv_tasks.Items.RemoveAt(Lsv_tasks.Items.Count-1);
                     
                 }
                 if(Lsv_tasks.Items.Count == 0)
@@ -409,7 +409,7 @@ namespace Pomodoro
 
             if (tb.Text == string.Empty && check_task_empty == true)
             {
-                Lsv_tasks.Items.RemoveAt(Lsv_tasks.Items.Count - 1);
+                //Lsv_tasks.Items.RemoveAt(Lsv_tasks.Items.Count - 1);
                 if (Lsv_tasks.Items.Count == 0)
                 {
                     Lsv_tasks.Visibility = Visibility.Hidden;
@@ -420,6 +420,50 @@ namespace Pomodoro
             }
             Lsv_tasks.SelectedItem = null;
             check_task_empty = true;
+        }
+
+        private void NewTB_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.RightButton == MouseButtonState.Pressed)
+            {
+                TextBox textBox = (TextBox)sender;
+
+                ContextMenu contextMenu = new ContextMenu();
+                MenuItem deleteItem = new MenuItem() 
+                { 
+                    Header = "Delete this task",
+                    Background = Brushes.LightSlateGray,
+                };
+                MenuItem strikethroughItem = new MenuItem()
+                {
+                    Header = "Complete this task",
+                    Background = Brushes.LightSlateGray,
+                };
+                deleteItem.Click += (s, args) => DeleteItem(textBox.DataContext);
+                strikethroughItem.Click += (s, args) => ToggleStrikethrough(textBox);
+
+                contextMenu.Items.Add(deleteItem);
+                contextMenu.Items.Add(strikethroughItem);
+
+                textBox.ContextMenu = contextMenu;
+            }
+        }
+
+        private void DeleteItem(object item)
+        {
+            Lsv_tasks.Items.Remove(item);
+        }
+
+        private void ToggleStrikethrough(TextBox textBox)
+        {
+            if (textBox.TextDecorations.Count == 0)
+            {
+                textBox.TextDecorations.Add(TextDecorations.Strikethrough);
+            }
+            else
+            {
+                textBox.TextDecorations.Clear();
+            }
         }
 
         private void Skip_Button_Click(object sender, RoutedEventArgs e)

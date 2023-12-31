@@ -22,6 +22,35 @@
         <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0"/>
     </WindowChrome.WindowChrome>
 
+    <Window.Resources>
+        <Style TargetType="{x:Type ListView}">
+            <Setter Property="BorderThickness" Value="0" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style TargetType="{x:Type ListViewItem}">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderThickness" Value="0" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="BorderThickness" Value="1" />
+                    <Setter Property="Foreground" Value="WhiteSmoke" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
     <Grid Background="{StaticResource App.Background}" Name="Main_Grid" Focusable="True">
         <Canvas HorizontalAlignment="Left" 
                 Background="{StaticResource Setting.Background}" Width="282">
@@ -125,7 +154,7 @@
                     Canvas.Left="24" 
                     Canvas.Top="140"
                     Content="➖"
-                    Background="#7F433E5B" 
+                    Background="#7F433E5B"
                     FontSize="27"
                     Click="Down_Click"/>
 
@@ -310,7 +339,7 @@
 
         <Canvas x:Name="Cv_Tasks" 
             Margin="306,514,478,52">
-            <Rectangle Width="386"
+            <Rectangle Width="383"
                        Height="242"
                        Style="{StaticResource RTG_Default}" HorizontalAlignment="Center" Canvas.Top="2"/>
             <Button Style="{StaticResource Icon_Button_Style}"
@@ -334,11 +363,12 @@
                 Canvas.Top="102" Height="65"
                 TextAlignment="Center"
                 Foreground="LightGray"/>
+            <Image Source="/Sources/blue_tick.png" Width="25" Canvas.Left="11" Canvas.Top="6" RenderTransformOrigin="0.84,1.08" HorizontalAlignment="Center" VerticalAlignment="Top" />
             <TextBlock Style="{StaticResource txbl_Default}"
-                Text="Tasks"
+                Text="Tasks" FontWeight="Bold"
                 FontSize="15"  
-                Canvas.Left="21" 
-                Canvas.Top="2"/>
+                Canvas.Left="41" 
+                Canvas.Top="8"/>
             <Button x:Name="Start_Button_Copy"
                 Style="{StaticResource Icon_Button_Style}" 
                 Canvas.Left="125" 
@@ -351,25 +381,28 @@
                 Height="43" Click="Start_Button_Copy_Click"/>
             <ListView x:Name="Lsv_tasks"
                       Height="204" 
-                      Width="386" 
+                      Width="383" BorderBrush="Transparent"
                       Background="Transparent" 
-                      HorizontalAlignment="Center" 
-                      VerticalAlignment="Top" 
+                      HorizontalAlignment="Left" 
+                      VerticalAlignment="Center" 
                       Canvas.Top="40"
                       Visibility="Hidden"
-                      BorderThickness="0">
+                      BorderThickness="0"
+                      ScrollViewer.HorizontalScrollBarVisibility="Hidden">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextBox x:Name="NewTB" 
-                            Width="350" 
-                                 FontSize="20" 
-                                 BorderBrush="WhiteSmoke" 
-                                 BorderThickness="1" 
-                                 Background="Transparent" 
-                                 Foreground="White"
+                        <TextBox x:Name="NewTB"
+                            Width="370" Height="35"
+                                 FontSize="20"
+                                 BorderThickness="0"
+                                 Background="#474545" VerticalContentAlignment="Center"
+                                 Foreground="Snow"
+                                 Margin="3 3 3 0"
+                                 TextWrapping="Wrap"
                                  FocusManager.FocusedElement="{Binding ElementName=NewTB}"
-                                 KeyDown="NewTB_KeyDown"
-                                 LostFocus="NewTB_LostFocus"/> 
+                                 KeyUp="NewTB_KeyDown"
+                                 LostFocus="NewTB_LostFocus"
+                                 PreviewMouseRightButtonDown="NewTB_PreviewMouseRightButtonDown"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
@@ -403,7 +436,7 @@
             <TextBlock x:Name="txblCountdown"
                        Style="{StaticResource txbl_Default}"
                        FontSize="100"
-                       Background="Transparent" 
+                       Background="Transparent"
                        HorizontalAlignment="Left" Canvas.Left="278" Canvas.Top="58" VerticalAlignment="Center"/>
 
             <Button x:Name="Pause_Button"
